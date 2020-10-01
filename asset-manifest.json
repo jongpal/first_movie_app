@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/first_movie_app/static/css/main.d3a8fc87.chunk.css",
+    "main.js": "/first_movie_app/static/js/main.1fdd9dde.chunk.js",
+    "main.js.map": "/first_movie_app/static/js/main.1fdd9dde.chunk.js.map",
+    "runtime-main.js": "/first_movie_app/static/js/runtime-main.0298a7f2.js",
+    "runtime-main.js.map": "/first_movie_app/static/js/runtime-main.0298a7f2.js.map",
+    "static/js/2.ba9bf5c0.chunk.js": "/first_movie_app/static/js/2.ba9bf5c0.chunk.js",
+    "static/js/2.ba9bf5c0.chunk.js.map": "/first_movie_app/static/js/2.ba9bf5c0.chunk.js.map",
+    "index.html": "/first_movie_app/index.html",
+    "precache-manifest.de4846a42cd70a0db41df6ad4a6e18c1.js": "/first_movie_app/precache-manifest.de4846a42cd70a0db41df6ad4a6e18c1.js",
+    "service-worker.js": "/first_movie_app/service-worker.js",
+    "static/css/main.d3a8fc87.chunk.css.map": "/first_movie_app/static/css/main.d3a8fc87.chunk.css.map",
+    "static/js/2.ba9bf5c0.chunk.js.LICENSE.txt": "/first_movie_app/static/js/2.ba9bf5c0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0298a7f2.js",
+    "static/js/2.ba9bf5c0.chunk.js",
+    "static/css/main.d3a8fc87.chunk.css",
+    "static/js/main.1fdd9dde.chunk.js"
+  ]
+}
