@@ -1,0 +1,18 @@
+.link_design{
+    all:unset;
+    cursor: pointer;
+    color:rgba(0, 0, 0, 0.877);
+}
+.img_ctrl{
+    position:relative;
+    top : -50px;
+    float: left;
+    margin-right: 10px;
+    box-shadow : 10px 10px 40px gray;
+}
+.genre{
+    opacity : 0.3;
+}
+.summary { 
+    opacity : 0.6;
+}

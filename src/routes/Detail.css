@@ -1,0 +1,23 @@
+.d_whole_ctrl{
+    background-color: rgba(48, 11, 11, 0.753);
+    margin-left:250px;
+    margin-right:250px;
+    height:600px;
+    color:rgba(206, 235, 235, 0.692);
+    border-radius: 8px;
+
+}
+.d_title{
+    margin-top:15px;
+    margin-left:10px;
+}
+.d_img_ctrl{
+    width :330px;
+    float : left;
+    margin-right:10px;
+}
+.d_summary{
+    padding-top: 10px;
+    font-style: italic;
+    margin-right:10px;
+}

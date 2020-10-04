@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {HashRouter, Route} from "react-router-dom";
+import About from "./routes/About";
+import Home from "./routes/Home";
+import Navigator from "./components/Navigator";
+import Detail from "./routes/Detail";
 
-function App() {
+function App(){//you can use either component or make contents inside 
+                //remember how routers of React actually work
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <HashRouter>
+      <Navigator />
+      <Route path="/about" component={About}/>
+      <Route path="/" exact={true} component={Home}/> 
+      <Route path="/movie/:id" component={Detail}/>
+    </HashRouter>
+  )
 }
 
 export default App;
