@@ -3,63 +3,70 @@ import axios from "axios";
 //import Proptypes from "prop-types";
 import Movie from "../components/Movie";
 import "./Home.css";
+import { withCookies } from "react-cookie";
 
-const URL ="https://yts-proxy.now.sh/list_movies.json?sort_by=rating";
-class Home extends React.Component{
+const URL = "https://yts-proxy.now.sh/list_movies.json?sort_by=rating";
+class Home extends React.Component {
   state = {
     isLoad: true,
-    movie: []
+    movie: [],
+    click_good: 0,
   };
-  /*add = () => {
-    this.setState(current => ({
-      count : current.count + 1
-    }))  //curly bracket 안의 것이 리턴값, 그냥 괄호 안의 값은 함수내용.
-  };
-  minus = () => {
-    this.setState(current => ({
-      count : current.count - 1
-    }))
-  } */
-  getMovies = async() => {
-    const {data:{data :{movies}}} = await axios.get(URL);
-    console.log(movies);
-    this.setState({movie : movies, isLoad : false});
-    //const movie_title = movies.map((title) => title.title);
-    
-    
+  constructor(props) {
+    super();
   }
-  componentDidMount(){
-    //setTimeout(() => {this.setState({isLoad : false})}, 6000);
-    //console.log("mounted");
+  minus = () => {
+    this.setState((current) => ({
+      count: current.count - 1,
+    }));
+  };
+  getMovies = async () => {
+    const {
+      data: {
+        data: { movies },
+      },
+    } = await axios.get(URL);
+    this.setState({ movie: movies, isLoad: false });
+  };
+  componentDidMount() {
     this.getMovies();
   }
-  componentDidUpdate(){ 
-    
-  }
-  componentWillUnmount(){
-     
-  }
-  render(){
-    
-    const {isLoad, movie} = this.state;  // it means get me isLoading from this.state
-    
-    
-    return <div>{isLoad ? <div className="isLoading">"Loading..."</div> : 
-    <div className="whole_ctrl">
-      {
-        movie.map(movie => {
-          return (
-            <div className="whole2_ctrl" key={movie.id}>
-            <Movie title={movie.title} id={movie.id} rating={movie.rating} year={movie.year}
-             summary={movie.summary} genre={movie.genres.map((genre,index) => genre+" ")}
-              poster={movie.medium_cover_image}/>
-            </div>
-          )
-         })
-      }
-    </div>
-    }</div>;
+  componentDidUpdate() {}
+  componentWillUnmount() {}
+  render() {
+    const { isLoad, movie } = this.state;
+    const { cookies } = this.props;
+    return (
+      <div>
+        {isLoad ? (
+          <div className="isLoading">"Loading..."</div>
+        ) : (
+          <div className="whole_ctrl">
+            {movie.map((movie) => {
+              return (
+                <div className="whole2_ctrl" key={movie.id}>
+                  <Movie
+                    title={movie.title}
+                    id={movie.id}
+                    rating={movie.rating}
+                    year={movie.year}
+                    summary={movie.summary}
+                    genre={movie.genres.map((genre, index) => genre + " ")}
+                    poster={movie.medium_cover_image}
+                    click_good={
+                      cookies.get(`click_good ${movie.id}`)
+                        ? cookies.get(`click_good ${movie.id}`)
+                        : 0
+                    }
+                  />
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
   }
 }
 
-export default Home;
+export default withCookies(Home);
