@@ -1,14 +1,11 @@
 import React from "react";
 import axios from "axios";
-//import Proptypes from "prop-types";
 import Movie from "../components/Movie";
-import "./Home.css";
 import { withCookies } from "react-cookie";
-const API_KEY = "23d092f69254081e6b32034f186508e0";
-const URL = "https://yts-proxy.now.sh/list_movies.json?sort_by=rating";
-const dmdb_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
+import "./Genre.css";
+let URL = "https://yts-proxy.now.sh/list_movies.json?sort_by=rating";
 
-class Home extends React.Component {
+class Genres extends React.Component {
   state = {
     isLoad: true,
     movie: [],
@@ -17,12 +14,8 @@ class Home extends React.Component {
   constructor(props) {
     super();
   }
-  minus = () => {
-    this.setState((current) => ({
-      count: current.count - 1,
-    }));
-  };
   getMovies = async () => {
+    URL = URL + `&genre=${this.props.match.params.genre}`;
     const {
       data: {
         data: { movies },
@@ -33,21 +26,20 @@ class Home extends React.Component {
   componentDidMount() {
     this.getMovies();
   }
-  componentDidUpdate() {}
-  componentWillUnmount() {}
   render() {
     const { isLoad, movie } = this.state;
     const { cookies } = this.props;
     return (
       <div>
         {isLoad ? (
-          <div className="isLoading">"Loading..."</div>
+          "Loading..."
         ) : (
-          <div className="whole_ctrl">
-            {movie.map((movie) => {
+          <div className="g_movie_container">
+            {movie.map((movie, ind) => {
               return (
-                <div className="whole2_ctrl" key={movie.id}>
+                <div className="g_movie2_container">
                   <Movie
+                    key={ind}
                     title={movie.title}
                     id={movie.id}
                     rating={movie.rating}
@@ -70,5 +62,4 @@ class Home extends React.Component {
     );
   }
 }
-
-export default withCookies(Home);
+export default withCookies(Genres);

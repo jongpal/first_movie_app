@@ -7,6 +7,10 @@ class Detail extends React.Component {
     super();
     const { cookies } = props;
     currentUrl.push(cookies.get("currentUrl"));
+
+    // if (cookies.get(`click_good ${props.location.state}`) === undefined)
+    //   props.history.push("/");
+    // else
     this.state = {
       click_good: cookies.get(`click_good ${props.location.state.id}`) || "0",
     };
