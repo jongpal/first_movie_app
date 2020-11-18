@@ -4,7 +4,9 @@ import axios from "axios";
 import Movie from "../components/Movie";
 import "./Home.css";
 import { withCookies } from "react-cookie";
-const API_KEY = "23d092f69254081e6b32034f186508e0";
+import dotenv from 'dotenv';
+dotenv.config({path : './../../config.env'});
+const API_KEY = process.env.API_KEY;
 const URL = "https://yts-proxy.now.sh/list_movies.json?sort_by=rating";
 const dmdb_URL = `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
